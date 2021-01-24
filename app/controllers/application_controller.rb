@@ -9,8 +9,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "this_is_random_salt"
   end
 
-  get "/" do
-    redirect '/login'
+  get '/' do
+    erb :welcome
   end
 
   helpers do
