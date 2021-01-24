@@ -1,22 +1,23 @@
 
 
-<h2>Task Name: <%= @task.name %></h2>
+<h2><%= @task.name %></h2>
   
-<p>Category: <%= @task.category %> | Size: <%= @task.size %> | 
-Due Date: 
+<h5>Category: <%= @task.category %> </h5>
+<h5>Size: <%= @task.size %> </h5>
+<h5>Due Date: 
   <% if !@task.due_date == "" %>
        <%= @task.due_date %>
   <% else %>
     none
-  <% end %>
-    | Do Date:
+  <% end %></h5>
+<h5>Do Date:
   <% if !@task.do_date == "" %>
        <%= @task.do_date %>
   <% else %>
     none
-  <% end %>
+  <% end %></h5><br>
   
-  <p>Notes:</p>
+  <h5>Notes:</h5>
   <% @task.notes.each do |note| %>
     - <%= note.content %> (<%= User.find(note.user_id).name %>)
   <% end %>
