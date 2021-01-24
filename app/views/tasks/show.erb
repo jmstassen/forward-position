@@ -1,0 +1,22 @@
+
+
+<h2>Task Name: <%= @task.name %></h2>
+  
+<p>Category: <%= @task.category %> | Size: <%= @task.size %> | 
+Due Date: 
+  <% if !@task.due_date == "" %>
+       <%= @task.due_date %>
+  <% else %>
+    none
+  <% end %>
+    | Do Date:
+  <% if !@task.do_date == "" %>
+       <%= @task.do_date %>
+  <% else %>
+    none
+  <% end %>
+  
+  <p>Notes:</p>
+  <% @task.notes.each do |note| %>
+    - <%= note.content %> (<%= User.find(note.user_id).name %>)
+  <% end %>

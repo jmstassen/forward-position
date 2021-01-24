@@ -36,6 +36,7 @@ class TasksController < ApplicationController
   end
 
   get '/tasks/:id' do
+    @task = Task.find(params[:id])
     erb :'/tasks/show'
   end
 
