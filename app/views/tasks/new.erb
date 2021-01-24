@@ -4,9 +4,9 @@
 
   <label for="name">Task Name: </label><input type="text" name="task[name]" size="50"><br><br>
   <label for="due_date">Due Date: </label><input type="date" name="task[due_date]">
-  <label for="do_date">Do Date: </label><input type="date" name="tastk[do_date]"><br><br>
+  <label for="do_date">Do Date: </label><input type="date" name="task[do_date]"><br><br>
   <label for="category">Category: </label>
-    <select id="category" name="tastk[category]">
+    <select id="category" name="task[category]">
       <option value="approval">approval</option>
       <option value="decision">decision</option>
       <option value="deliverable">deliverable</option>
@@ -28,8 +28,7 @@
       <option value="13">13</option>
     </select><br><br>
   <label for="note">Note: </label><br>
-    <textarea name="task[note][content]" rows="5" cols="50">
-    </textarea><br><br>
+    <textarea name="note[content]" rows="5" cols="50"></textarea><br><br>
   <input type="submit" value="Create Task">
 
 </form>
