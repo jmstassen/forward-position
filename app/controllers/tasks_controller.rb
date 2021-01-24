@@ -9,7 +9,7 @@ class TasksController < ApplicationController
     # create a new note and save it to the db
     # make sure task and note have all necessary attributes
     # make sure task and note are only created if user is logged in
-    binding.pry
+    
     if !logged_in?
       redirect '/'
     else
@@ -34,6 +34,17 @@ class TasksController < ApplicationController
     # "size"=>"5", 
     # "note"=>{"content"=>"here is a new note within a task"}}}
   end
+
+  get '/tasks/:id/edit' do
+    @task = Task.find(params[:id])
+    erb :'/tasks/edit'
+  end
+
+  patch '/tasks/:id' do
+  
+  end
+
+
 
   get '/tasks/:id' do
     @task = Task.find(params[:id])
