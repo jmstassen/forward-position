@@ -16,7 +16,7 @@ class TasksController < ApplicationController
       if params[:task][:name] != ""
         @task = Task.create(params[:task])
         if !params[:note][:content].empty?
-          @task.notes << Note.create(content: params[:note][:content])
+          @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
         end
         redirect "/tasks/#{@task.id}"
       else
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   end
 
   get '/tasks/:id' do
-
+    erb :'/tasks/show'
   end
 
 end
