@@ -1,0 +1,32 @@
+<h2>New Task</h2>
+
+<form action="/tasks" method="post">
+
+  <label for="name">Task Name: </label><input type="text" name="name" size="50"><br><br>
+  <label for="due_date">Due Date: </label><input type="date" name="due_date"><br>
+  <label for="do_date">Do Date: </label><input type="date" name="do_date"><br><br>
+  <label for="category">Category: </label>
+    <select id="category" name="category">
+      <option value="approval">approval</option>
+      <option value="decision">decision</option>
+      <option value="deliverable">deliverable</option>
+      <option value="email">email</option>
+      <option value="preparation">preparation</option>
+      <option value="review">review</option>
+      <option value="other" selected>other</option>
+    </select><br>
+  <label for="size">Size: </label>
+    <select id="size" name="size">
+      <option value="0" selected>0</option>  
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="5">5</option>
+      <option value="8">8</option>
+      <option value="13">13</option>
+    </select><br><br>
+  
+  
+  
+  <input type="submit" value="Create Task">
+
+</form>
