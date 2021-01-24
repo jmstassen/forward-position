@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :name
       t.date :due_date
       t.date :do_date
-      t.string :type
+      t.string :category
       t.integer :size
       t.string :status
       t.date :done_date
