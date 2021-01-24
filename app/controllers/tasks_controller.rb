@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   end
 
   post '/tasks' do
-
+    raise params.inspect
   end
 
   get '/tasks/:id' do
