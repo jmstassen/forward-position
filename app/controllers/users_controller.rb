@@ -1,12 +1,27 @@
 class UsersController < ApplicationController
   
-    #the purpose of this route is to render login page (form)
   get '/login' do
     erb :login
   end
 
+  
+  post '/login' do
+    @user = User.find_by(email: params[:email])
+    if @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect "users/#{@user.id}""
+    else
+    end
+  end
+
+
   get '/signup' do
+  
   end 
+
+  get 'users/:id' do
+
+  end
 
 
 end
