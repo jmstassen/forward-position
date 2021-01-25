@@ -5,13 +5,13 @@
     <h5>Category: <%= task.category %> |
       Size: <%= task.size %> |
       Due Date: 
-        <% if !task.due_date == "" %>
+        <% if task.due_date != "" %>
           <%= task.due_date %>
         <% else %>
           none
         <% end %> |
       Do Date:
-        <% if !task.do_date == "" %>
+        <% if task.do_date != "" %>
           <%= task.do_date %>
         <% else %>
           none

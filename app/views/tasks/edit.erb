@@ -32,7 +32,7 @@
   <% @task.notes.each do |note| %>
     <h6>(<%= User.find(note.user_id).name %>:)</h6>
     <textarea name="note[<%= note.id %>]" rows="5" cols="50"><%= note.content %></textarea>
-    <input type="checkbox" id="delete_note_<%= note.id %>" name="delete_note_<%= note.id %>"><label for="delete_note_<%= note.id %>">delete</label>
+    <input type="checkbox" name="delete[<%= note.id %>]"><label for="note[<%= note.id %>][delete]">delete note</label>
   <% end %>
   <br>
   <label for="note">New Note: </label><br>

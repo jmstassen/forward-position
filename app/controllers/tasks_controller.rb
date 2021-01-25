@@ -57,6 +57,19 @@ class TasksController < ApplicationController
         @task.update(params[:task])
         @user = User.find(current_user.id)
         @user.tasks << @task
+        binding.pry
+      
+        
+
+        @task.notes.each do |note|
+          @note = note
+            if params[:delete]["#{@note.id}"] != nil
+              @note.delete
+            else
+              @note.update(content: params[:note]["#{@note.id}"])
+            end
+        end
+
         # @task.notes.each do |note|
         #   if params.include?(:delete_note_"#{@note.id}" => "on")
         #     Note.find(note.id).delete
