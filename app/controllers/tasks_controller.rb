@@ -77,6 +77,16 @@ class TasksController < ApplicationController
     end
   end
 
+  delete '/tasks/:id' do
+    set_task
+    if user_owns?(@task)
+      @task.destroy
+      redirect '/tasks'
+    else
+      redirect '/tasks'
+    end
+  end
+
   get '/tasks/:id' do
     set_task
     if user_owns?(@task)
