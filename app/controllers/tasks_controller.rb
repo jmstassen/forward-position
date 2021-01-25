@@ -24,7 +24,7 @@ class TasksController < ApplicationController
         if !params[:note][:content].empty?
           @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
         end
-        redirect "/users/#{@user.id}"
+        redirect '/tasks'
       else
         redirect '/tasks/new'
       end
@@ -45,7 +45,6 @@ class TasksController < ApplicationController
   end
 
   patch '/tasks/:id' do
-    # need to prevent from editing other's
     set_task
     if !logged_in?
       redirect '/'
