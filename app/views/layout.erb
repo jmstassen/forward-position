@@ -15,9 +15,9 @@
   </head>
   <body>
     <div class="nav">
-      <a href="/logout">Log Out</a>
-      <a href="/users/<%= current_user.id %>">My Tasks</a>
-      <a href="/tasks/new">New Task</a>
+      <% if logged_in? %><a href="/logout">Log Out</a><% end %>
+      <% if logged_in? %><a href="/users/<%= current_user.id %>">My Tasks</a><% end %>
+      <% if logged_in? %><a href="/tasks/new">New Task</a><% end %>
     <div class="wrapper">
 
         <%= yield %>
