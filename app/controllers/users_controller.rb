@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
     if !!@user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/users/#{@user.id}"
+      redirect '/tasks'
     else
       redirect '/login'
     end
@@ -30,9 +30,16 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id' do
-    # need to prevent others from seeing
-    @user = User.find_by(id: params[:id])
-    erb :'/users/show'
+    if !logged_in?
+      redirect '/'
+    else
+      if current_user.id == params[:id].to_i
+        @user = User.find_by(id: params[:id])
+        erb :'/users/show'
+      else
+        redirect '/'
+      end
+    end
   end
 
   patch '/users/:id' do
