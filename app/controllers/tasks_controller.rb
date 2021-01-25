@@ -24,10 +24,19 @@ class TasksController < ApplicationController
 
   get '/tasks/:id/edit' do
     set_task
-    erb :'/tasks/edit'
+    if logged_in?
+      if @task.user == current_user
+        erb :'/tasks/edit'
+      else
+        redirect "/users/#{current_user.id}"
+      end
+    else
+      redirect '/'
+    end
   end
 
   patch '/tasks/:id' do
+    # need to prevent from editing other's
     set_task
     if !logged_in?
       redirect '/'
