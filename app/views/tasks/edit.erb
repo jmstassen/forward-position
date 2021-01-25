@@ -1,6 +1,7 @@
 <h2>Edit Task</h2>
 
-<form action="/tasks" method="post">
+<form action="/tasks/<%= @task.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
   <label for="name">Task Name: </label><input type="text" name="task[name]" size="50" value="<%= @task.name %>"><br><br>
   <label for="due_date">Due Date: </label><input type="date" name="task[due_date]" value="<%= @task.due_date %>">
   <label for="do_date">Do Date: </label><input type="date" name="task[do_date]" value="<%= @task.do_date %>"><br><br>
@@ -29,12 +30,13 @@
 
   <h5>Existing Notes:</h5>
   <% @task.notes.each do |note| %>
-    <textarea name="note[content][]" rows="5" cols="50"><%= note.content %> (<%= User.find(note.user_id).name %>)</textarea>
+    <h6>(<%= User.find(note.user_id).name %>:)</h6>
+    <textarea name="note[<%= note.id %>]" rows="5" cols="50"><%= note.content %></textarea>
     <input type="checkbox" id="delete_note_<%= note.id %>" name="delete_note_<%= note.id %>"><label for="delete_note_<%= note.id %>">delete</label>
   <% end %>
   <br>
   <label for="note">New Note: </label><br>
-    <textarea name="note[content][new]" rows="5" cols="50"></textarea><br><br>
+    <textarea name="note[content]" rows="5" cols="50"></textarea><br><br>
   <input type="submit" value="Update Task">
 
 </form>

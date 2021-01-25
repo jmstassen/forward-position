@@ -43,7 +43,21 @@ class TasksController < ApplicationController
   end
 
   patch '/tasks/:id' do
+
+
+
   
+
+    # delete_note_9	
+    # "on"
+    # note	
+    # {"9"=>"note #1 (John)", "content"=>"new note for it too"}
+    # task	
+    # {"name"=>"here's another new task for John - edited", 
+    # "due_date"=>"2021-01-28", 
+    # "do_date"=>"2021-01-28", 
+    # "category"=>"fyi", 
+    # "size"=>"3"}
   end
 
 
