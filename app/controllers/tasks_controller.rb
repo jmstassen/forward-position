@@ -1,5 +1,11 @@
 class TasksController < ApplicationController
 
+  get '/tasks' do
+    # need to prevent others from seeing list
+    @user = current_user
+    erb :'/tasks/index'
+  end
+
   get '/tasks/new' do
     erb :'/tasks/new'
   end
