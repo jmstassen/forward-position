@@ -54,17 +54,21 @@ class TasksController < ApplicationController
       redirect '/'
     else
       if params[:task][:name] != ""
-        
-
-
-
-        @task = Task.update(params[:task])
+        @task.update(params[:task])
         @user = User.find(current_user.id)
         @user.tasks << @task
+        # @task.notes.each do |note|
+        #   if params.include?(:delete_note_"#{@note.id}" => "on")
+        #     Note.find(note.id).delete
+        #   else
+        #     note.content = params[:note][note.id]
+        #     note.user_id = current_user.id
+        #   end
+        # end
         if !params[:note][:content].empty?
           @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
         end
-        redirect "/users/#{@user.id}"
+          redirect "/users/#{@user.id}"
       else
         redirect '/tasks/new'
       end
