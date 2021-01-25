@@ -1,9 +1,6 @@
 <h2>Edit Task</h2>
 
 <form action="/tasks" method="post">
-
-<%= @task.category %>
-
   <label for="name">Task Name: </label><input type="text" name="task[name]" size="50" value="<%= @task.name %>"><br><br>
   <label for="due_date">Due Date: </label><input type="date" name="task[due_date]" value="<%= @task.due_date %>">
   <label for="do_date">Do Date: </label><input type="date" name="task[do_date]" value="<%= @task.do_date %>"><br><br>
@@ -20,19 +17,24 @@
       <option value="other" <% if @task.category == "other" %>selected<% end %>>other</option>
     </select>
   <label for="size">Size: </label>
-    <select id="size" name="task[size]" value="<%= @task.size %>">
-      <option value="0">0</option>
-      <option value="1">1</option>  
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="5">5</option>
-      <option value="8">8</option>
-      <option value="13">13</option>
+    <select id="size" name="task[size]">
+      <option value="0" <% if @task.size == 0 %>selected<% end %>>0</option>
+      <option value="1" <% if @task.size == 1 %>selected<% end %>>1</option>  
+      <option value="2" <% if @task.size == 2 %>selected<% end %>>2</option>
+      <option value="3" <% if @task.size == 3 %>selected<% end %>>3</option>
+      <option value="5" <% if @task.size == 5 %>selected<% end %>>5</option>
+      <option value="8" <% if @task.size == 8 %>selected<% end %>>8</option>
+      <option value="13" <% if @task.size == 13 %>selected<% end %>>13</option>
     </select><br><br>
 
-
-  <label for="note">Note: </label><br>
-    <textarea name="note[content]" rows="5" cols="50"></textarea><br><br>
-  <input type="submit" value="Create Task">
+  <h5>Existing Notes:</h5>
+  <% @task.notes.each do |note| %>
+    <textarea name="note[content][]" rows="5" cols="50"><%= note.content %> (<%= User.find(note.user_id).name %>)</textarea>
+    <input type="checkbox" id="delete_note_<%= note.id %>" name="delete_note_<%= note.id %>"><label for="delete_note_<%= note.id %>">delete</label>
+  <% end %>
+  <br>
+  <label for="note">New Note: </label><br>
+    <textarea name="note[content][new]" rows="5" cols="50"></textarea><br><br>
+  <input type="submit" value="Update Task">
 
 </form>
