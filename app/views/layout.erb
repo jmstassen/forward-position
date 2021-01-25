@@ -16,7 +16,7 @@
   <body>
     <div class="nav">
       <% if logged_in? %><a href="/logout">Log Out</a><% end %>
-      <% if logged_in? %><a href="/users/<%= current_user.id %>">My Tasks</a><% end %>
+      <% if logged_in? %><a href="/tasks">My Tasks</a><% end %>
       <% if logged_in? %><a href="/tasks/new">New Task</a><% end %>
     <div class="wrapper">
 
