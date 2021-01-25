@@ -34,6 +34,17 @@ class UsersController < ApplicationController
     erb :'/users/show'
   end
 
+  patch '/users/:id' do
+    @user = User.find_by(id: params[:id])
+    if @user.authenticate(params[:password])
+      @user.email = params[:email]
+      @user.update_attribute(:password, params[:new_password])
+      redirect "/users/#{@user.id}"
+    else
+      redirect "/users/#{@user.id}"
+    end
+  end
+
   get '/logout' do
     session.clear
     redirect '/'
