@@ -38,13 +38,37 @@ class TasksController < ApplicationController
   end
 
   get '/tasks/:id/edit' do
-    @task = Task.find(params[:id])
+    set_task
     erb :'/tasks/edit'
   end
 
   patch '/tasks/:id' do
+    set_task
+    #find task
+    #update task
+    #find notes
+    #update notes (delete if "on")
+    #create new note (if applicable)
+    #redirect to show page
+    if !logged_in?
+      redirect '/'
+    else
+      if params[:task][:name] != ""
+        
 
 
+
+        @task = Task.update(params[:task])
+        @user = User.find(current_user.id)
+        @user.tasks << @task
+        if !params[:note][:content].empty?
+          @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
+        end
+        redirect "/users/#{@user.id}"
+      else
+        redirect '/tasks/new'
+      end
+    end
 
   
 
@@ -63,8 +87,15 @@ class TasksController < ApplicationController
 
 
   get '/tasks/:id' do
-    @task = Task.find(params[:id])
+    set_task
     erb :'/tasks/show'
   end
+
+  private
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
 
 end
