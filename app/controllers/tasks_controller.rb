@@ -61,7 +61,7 @@ class TasksController < ApplicationController
 
         @task.notes.each do |note|
           @note = note
-          binding.pry
+          
             if params[:delete] != nil
               if params[:delete]["#{@note.id}"] != nil
                 @note.delete
