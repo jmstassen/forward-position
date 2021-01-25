@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id])
     end
 
-    def user_owns_task?
+    def user_owns?(task)
       task.user == current_user
     end
 
