@@ -1,24 +1,8 @@
 <h2><%= @user.name %></h2>
 
-<% @user.tasks.each do |task| %>
-  <h3><%= task.name %> (<a href="/tasks/<%= task.id %>/edit">Edit</a>)</h3> 
-    <h5>Category: <%= task.category %> |
-      Size: <%= task.size %> |
-      Due Date: 
-        <% if task.due_date != "" %>
-          <%= task.due_date %>
-        <% else %>
-          none
-        <% end %> |
-      Do Date:
-        <% if task.do_date != "" %>
-          <%= task.do_date %>
-        <% else %>
-          none
-        <% end %></h5>
-      <% task.notes.each do |note|%>
-        - <%= note.content %><br>
-        <% end %>
-    <% end %>
-
-
+<form method="post" action="/users/<%= @user.id %>">
+  <input type="hidden" name="_method" value="patch">
+  <label for="email">Email:</label><input type="string" name="email" value="<%= @user.email %>"><br><br>
+  <label for="password">Current Password:</label><input type="password" name="password"><br>
+  <label for="new_password"> New Password:</label><input type="password" name="new_password"><br>
+  <input type="submit" value="Update User">
