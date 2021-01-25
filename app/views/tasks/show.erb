@@ -21,3 +21,5 @@
   <% @task.notes.each do |note| %>
     - <%= note.content %> (<%= User.find(note.user_id).name %>)
   <% end %>
+
+  <a href="/tasks/<%= @task.id %>/edit">Edit</a>

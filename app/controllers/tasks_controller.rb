@@ -15,12 +15,12 @@ class TasksController < ApplicationController
     else
       if params[:task][:name] != ""
         @task = Task.create(params[:task])
-        user = User.find(current_user.id)
-        user.tasks << @task
+        @user = User.find(current_user.id)
+        @user.tasks << @task
         if !params[:note][:content].empty?
           @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
         end
-        redirect "/tasks/#{@task.id}"
+        redirect "/users/#{@user.id}"
       else
         redirect '/tasks/new'
       end
