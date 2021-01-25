@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end 
 
   post '/users' do
+    # need to make sure email is unique
     if params[:name] != "" && params[:email] != "" && params[:password] != ""
       @user = User.create(params)
       session[:user_id] = @user.id
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/:id' do
-    # need to prevent others from seeing list
+    # need to prevent others from seeing
     @user = User.find_by(id: params[:id])
     erb :'/users/show'
   end
