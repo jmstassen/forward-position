@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     erb :login
   end
 
-  
   post '/login' do
     @user = User.find_by(email: params[:email])
     if !!@user && @user.authenticate(params[:password])
@@ -14,7 +13,6 @@ class UsersController < ApplicationController
       redirect '/login'
     end
   end
-
 
   get '/signup' do
     erb :signup
@@ -27,12 +25,11 @@ class UsersController < ApplicationController
       redirect "/users/#{@user.id}"
     else
       redirect '/signup'
-    end 
-  
+    end
   end
 
-
   get '/users/:id' do
+    # need to prevent others from seeing list
     @user = User.find_by(id: params[:id])
     erb :'/users/show'
   end
