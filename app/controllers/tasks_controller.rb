@@ -1,13 +1,16 @@
 class TasksController < ApplicationController
 
   get '/tasks' do
-    # need to prevent others from seeing list
     @user = current_user
     erb :'/tasks/index'
   end
 
   get '/tasks/new' do
-    erb :'/tasks/new'
+    if !logged_in?
+      redirect '/'
+    else
+      erb :'/tasks/new'
+    end
   end
 
   post '/tasks' do    
@@ -31,10 +34,10 @@ class TasksController < ApplicationController
   get '/tasks/:id/edit' do
     set_task
     if logged_in?
-      if @task.user == current_user
+      if user_owns?(@task)
         erb :'/tasks/edit'
       else
-        redirect "/users/#{current_user.id}"
+        redirect '/tasks'
       end
     else
       redirect '/'
@@ -47,34 +50,41 @@ class TasksController < ApplicationController
     if !logged_in?
       redirect '/'
     else
-      if params[:task][:name] != ""
-        @task.update(params[:task])
-        @user = User.find(current_user.id)
-        @user.tasks << @task
-        @task.notes.each do |note|
-          @note = note
-            if params[:delete] != nil
-              if params[:delete]["#{@note.id}"] != nil
-                @note.delete
+      if user_owns?(@task)
+        if params[:task][:name] != ""
+          @task.update(params[:task])
+          @user = User.find(current_user.id)
+          @user.tasks << @task
+          @task.notes.each do |note|
+            @note = note
+              if params[:delete] != nil
+                if params[:delete]["#{@note.id}"] != nil
+                  @note.delete
+                end
+              else
+                @note.update(content: params[:note]["#{@note.id}"])
               end
-            else
-              @note.update(content: params[:note]["#{@note.id}"])
-            end
+          end
+          if !params[:note][:content].empty?
+            @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
+          end
+            redirect "/users/#{@user.id}"
+        else
+          redirect '/tasks'
         end
-        if !params[:note][:content].empty?
-          @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
-        end
-          redirect "/users/#{@user.id}"
       else
-        redirect '/tasks/new'
+        redirect '/tasks'
       end
     end
   end
 
   get '/tasks/:id' do
-    # need to prevent from seeing other's
     set_task
-    erb :'/tasks/show'
+    if user_owns?(@task)
+      erb :'/tasks/show'
+    else
+      redirect '/tasks'
+    end
   end
 
   private
