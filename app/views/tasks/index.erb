@@ -1,5 +1,9 @@
 <h2><%= @user.name %></h2>
 
+<% if flash[:message] %>
+  <h6><%= flash[:message] %></h3>
+<% end %>
+
 <% @user.tasks.sort_by(&:size).each do |task| %>
   <h3><%= task.name %> (<a href="/tasks/<%= task.id %>/edit">Edit</a>)</h3> 
     <h5>Category: <%= task.category %> |

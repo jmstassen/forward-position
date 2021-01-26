@@ -19,6 +19,7 @@
       <% if logged_in? %><a href="/tasks">My Tasks</a><% end %>
       <% if logged_in? %><a href="/tasks/new">New Task</a><% end %>
       <% if logged_in? %><a href="/users/<%= current_user.id %>">Settings</a><% end %>
+    </div>
     <div class="wrapper">
 
         <%= yield %>

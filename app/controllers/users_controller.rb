@@ -20,12 +20,19 @@ class UsersController < ApplicationController
   end 
 
   post '/users' do
-    # need to make sure email is unique
     if params[:name] != "" && params[:email] != "" && params[:password] != ""
-      @user = User.create(params)
-      session[:user_id] = @user.id
-      redirect '/tasks'
+      @user = User.new(params)
+      if @user.valid?
+        @user.save
+        session[:user_id] = @user.id
+        flash[:message] = "You have signed up. Create a new task to get started."
+        redirect '/tasks/new'
+      else
+        flash[:message] = "Invalid email/password combination. Please try again."
+        redirect '/signup'
+      end
     else
+      flash[:message] = "All fields are required. Please try again."
       redirect '/signup'
     end
   end

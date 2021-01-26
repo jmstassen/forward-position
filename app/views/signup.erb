@@ -8,5 +8,8 @@
   <input type="submit" value="Sign up">
 
 </form>
+<% if flash[:message] %>
+  <h6><%= flash[:message] %></h3>
+<% end %>
 <br><br>
 <a href="/login">Log In instead</a>
