@@ -37,6 +37,7 @@
   <br>
   <label for="note">New Note: </label><br>
     <textarea name="note[content]" rows="5" cols="50"></textarea><br><br>
+    <p>To include a link, copy <code>&lt;a href="http://[insert link here]"&gt;[describe link here]&lt;/a&gt;</code> and replace brackets and their contents</p>
   <input type="submit" value="Update Task">
 </form>
 <form action="/tasks/<%= @task.id %>" method="post">
