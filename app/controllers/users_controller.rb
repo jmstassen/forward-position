@@ -6,10 +6,11 @@ class UsersController < ApplicationController
 
   post '/login' do
     @user = User.find_by(email: params[:email])
-    if !!@user && @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect '/tasks'
     else
+      flash[:message] = "Invalid email/password combination. Please sign up or try again."
       redirect '/login'
     end
   end

@@ -7,6 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "this_is_random_salt"
+    register Sinatra::Flash
   end
 
   get '/' do
