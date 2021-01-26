@@ -88,9 +88,13 @@ class TasksController < ApplicationController
   end
 
   get '/tasks/:id' do
-    set_task
-    if user_owns?(@task)
-      erb :'/tasks/show'
+    if Task.exists?(params[:id])
+      set_task
+      if user_owns?(@task)
+        erb :'/tasks/show'
+      else
+        redirect '/tasks'
+      end
     else
       redirect '/tasks'
     end
