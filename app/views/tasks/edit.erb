@@ -38,5 +38,8 @@
   <label for="note">New Note: </label><br>
     <textarea name="note[content]" rows="5" cols="50"></textarea><br><br>
   <input type="submit" value="Update Task">
-
+</form>
+<form action="/tasks/<%= @task.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Task">
 </form>
