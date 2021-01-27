@@ -31,30 +31,26 @@
 
       <div class="dates-column">
         <div class="due-date">
-          <h3>due: 
+          <h4>due: 
             <% if task.due_date != "" && task.due_date != nil%>
               <%= task.due_date.strftime("%m/%d") %>
             <% else %>
               none
-            <% end %></h3>
+            <% end %></h4>
         </div>
         <div class="do-date">
-          <h3>do: 
-            <% if task.do_date != "" && task.do_date != nil%>
-              <%= task.do_date.strftime("%m/%d") %>
-            <% else %>
-              none
-            <% end %></h3>
+          <h4><label for="do_date[<%= task.id %>]">do:</label><input type=date name= "do_date[<%= task.id %>]" value="<%= task.do_date %>">
+          </h4>
         </div>
       </div>
       
       <div class="right-column">
         <div class="mark-complete">
-          <input type="checkbox" name="complete[<%= task.id %>]"><label for="complete[<%= task.id %>]">done</label>
+          <h4><input type="checkbox" name="complete[<%= task.id %>]"><label for="complete[<%= task.id %>]">done</label></h4>
         </div>
         <div class="new-note">
-          add note:<br>
-          <textarea class="note-textarea" name="new-note[<%= task.id %>]"></textarea>
+          <h4>add note:</h4>
+          <textarea rows="3" class="note-textarea" name="new-note[<%= task.id %>]"></textarea>
         </div>
       </div>
     </div>

@@ -32,11 +32,27 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    resize: none;
+  }
+
+  
+  .new-note {
+    height: auto;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   .left-column h3 {
     text-align: center;}
   }
+
+  /*
+  .right-column {
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }*/
 
   .wrapper {
     background: #fff;

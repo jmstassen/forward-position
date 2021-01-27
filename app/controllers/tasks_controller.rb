@@ -1,8 +1,12 @@
 class TasksController < ApplicationController
 
   get '/tasks' do
-    @user = current_user
-    erb :'/tasks/index'
+    if !logged_in?
+      redirect '/'
+    else
+      @user = current_user
+      erb :'/tasks/index'
+    end
   end
 
   get '/tasks/new' do
