@@ -24,3 +24,63 @@
         - <%= note.content %><br>
         <% end %>
     <% end %>
+
+<form method="post" action="tasks/mass-update">
+  <input type="hidden" name="_method" value="patch">
+  <% @user.tasks.sort_by(&:size).each do |task| %>
+    <div class="task-wrapper">
+      <div class="left-column">
+        <div class="category">
+          <h3><%= task.category %></h3>
+        </div>
+        <div class="size">
+          <h3><%= task.size %></h4>
+        </div>
+      </div>
+      
+      <div class="content-column">
+        <div class="task-name">
+          <h4><%= task.name %> (<a href="/tasks/<%= task.id %>/edit">edit</a>)</h4>
+        </div>
+        <div class="task-notes">
+          <% task.notes.each do |note|%>
+          - <%= note.content %><br>
+          <% end %><br>
+        </div>
+      </div>
+
+
+      <div class="dates-column">
+        <div class="do-date">
+          <p>do date: 
+            <% if task.do_date != "" && task.do_date != nil%>
+              <%= task.do_date.strftime("%m/%d") %>
+            <% else %>
+              none
+            <% end %>
+        </div>
+        <div class="due-date">
+          <p>due date: 
+            <% if task.due_date != "" && task.due_date != nil%>
+              <%= task.due_date.strftime("%m/%d") %>
+            <% else %>
+              none
+            <% end %>
+        </div>
+      </div>
+      
+      <div class="right-column">
+        <div class="mark-complete">
+          <input type="checkbox" name="complete[<%= task.id %>]"><label for="complete[<%= task.id %>]">done</label>
+        </div>
+        <div class="new-note">
+          add note:<br>
+          <textarea class="note-textarea" name="new-note[<%= task.id %>]"></textarea>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <input type="submit" value="update all">
+</form>
+
+

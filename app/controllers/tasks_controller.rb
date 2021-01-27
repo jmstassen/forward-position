@@ -44,6 +44,11 @@ class TasksController < ApplicationController
     end
   end
 
+  patch '/tasks/mass-update' do
+    raise params.inspect
+  end
+
+
   patch '/tasks/:id' do
     set_task
     if !logged_in?

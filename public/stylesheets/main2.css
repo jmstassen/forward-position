@@ -19,6 +19,24 @@
     line-height: 18px;
   }
 
+  .task-wrapper {
+    border: solid black 2px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 2fr;
+  }
+
+  .note-textarea {
+    height: 100%;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .left-column h3 {
+    text-align: center;}
+  }
+
   .wrapper {
     background: #fff;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
