@@ -2,10 +2,10 @@
 
 <form action="/tasks/<%= @task.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label for="name">Task Name: </label><input type="text" name="task[name]" size="50" value="<%= @task.name %>"><br><br>
-  <label for="due_date">Due Date: </label><input type="date" name="task[due_date]" value="<%= @task.due_date %>">
-  <label for="do_date">Do Date: </label><input type="date" name="task[do_date]" value="<%= @task.do_date %>"><br><br>
-  <label for="category">Category: </label>
+  <h3><label for="name">Task Name: </label><input class="task-name-form" type="text" name="task[name]" size="50" value="<%= @task.name %>"></h3><br>
+  <h3><label for="due_date">Due Date: </label><input type="date" name="task[due_date]" value="<%= @task.due_date %>"></h3>
+  <h3><label for="do_date">Do Date: </label><input type="date" name="task[do_date]" value="<%= @task.do_date %>"></h3>
+  <h3><label for="category">Category: </label>
     <select id="category" name="task[category]">
       <option value="approval" <% if @task.category == "approval" %>selected<% end %>>approval</option>
       <option value="decision" <% if @task.category == "decision" %>selected<% end %>>decision</option>
@@ -16,8 +16,8 @@
       <option value="review" <% if @task.category == "review" %>selected<% end %>>review</option>
       <option value="tracking" <% if @task.category == "tracking" %>selected<% end %>>tracking</option>
       <option value="other" <% if @task.category == "other" %>selected<% end %>>other</option>
-    </select>
-  <label for="size">Size: </label>
+    </select></h3>
+    <h3><label for="size">Size: </label>
     <select id="size" name="task[size]">
       <option value="0" <% if @task.size == 0 %>selected<% end %>>0</option>
       <option value="1" <% if @task.size == 1 %>selected<% end %>>1</option>  
@@ -26,21 +26,23 @@
       <option value="5" <% if @task.size == 5 %>selected<% end %>>5</option>
       <option value="8" <% if @task.size == 8 %>selected<% end %>>8</option>
       <option value="13" <% if @task.size == 13 %>selected<% end %>>13</option>
-    </select><br><br>
+    </select></h3><br>
 
-  <h5>Existing Notes:</h5>
+  <h3>Existing Notes:</h3>
   <% @task.notes.each do |note| %>
     <h6>(<%= User.find(note.user_id).name %>:)</h6>
-    <textarea name="note[<%= note.id %>]" rows="5" cols="50"><%= note.content %></textarea>
-    <input type="checkbox" name="delete[<%= note.id %>]"><label for="note[<%= note.id %>][delete]"> delete note</label>
+    <textarea class=note-textarea name="note[<%= note.id %>]" rows="5" cols="50"><%= note.content %></textarea>
+    <h4><input type="checkbox" name="delete[<%= note.id %>]"><label for="note[<%= note.id %>][delete]"> delete note</label></h4>
+    <br>
   <% end %>
   <br>
-  <label for="note">New Note: </label><br>
-    <textarea name="note[content]" rows="5" cols="50"></textarea><br><br>
-    <p>To include a link, copy <code>&lt;a href="http://[insert link here]"&gt;[describe link here]&lt;/a&gt;</code> and replace brackets and their contents</p>
+  <h3><label for="note">Add New Note: </label></h3>
+    <textarea class=note-textarea name="note[content]" rows="5" cols="50"></textarea>
+    <p>To include a link, copy <code>&lt;a href="http://[insert link here]"&gt;[describe link here]&lt;/a&gt;</code> and replace brackets and their contents</p><br>
   <input type="submit" value="Update Task">
 </form>
+<br>
 <form action="/tasks/<%= @task.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Task">
+  <input class="delete-button" type="submit" value="Delete Task">
 </form>
