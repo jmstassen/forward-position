@@ -1,7 +1,8 @@
 @media screen {
   /* --- Reset Styles --- */
   * {
-    list-style: none;
+    list-style-type: square;
+    list-style-position: inside;
     margin: 0;
     padding: 0;
   }
@@ -13,7 +14,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    font: 12px/20px Georgia, "Times New Roman", Times, serif;
+    font-family: Verdana, Geneva, sans-serif;
     background-color: rgb(0, 171, 89);
     color: rgb(3, 3, 3);
     /* font-family: Sans-Serif; */
@@ -24,6 +25,7 @@
     border: solid black 2px;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr 2fr;
+    column-gap: 5px;
   }
 
   .note-textarea {
@@ -67,27 +69,58 @@
 
   h1 {
     /* font-size: 36px; */
-    line-height: 54px;
-    font: bold 32px/42px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    /*line-height: 54px;
+    font: bold 32px/42px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 26.4px;
   }
 
   h2 {
-    border-bottom: 2px solid #ccc;
-    font-size: 24px;
-    line-height: 36px;
-    margin-bottom: 16px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 15.4px;
   }
 
   h3 {
-    font-size: 18px;
-    line-height: 36px;
+    /*font-size: 18px;
+    line-height: 36px;*/
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 15.4px;
   }
 
-  p {
-    /* margin-bottom: 18px; */
+  h4 {
+    /*font-size: 18px;
+    line-height: 36px;*/
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 15.4px;
+  }
+
+  p, li {
+    /* margin-bottom: 18px;
     font-size: 14px;
     line-height: 20px;
-    margin: 0 0 20px;
+    margin: 0 0 20px;*/
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
   }
 
   .main {
@@ -120,9 +153,9 @@
     margin-top: 20px;
     padding-top: 20px;
   }
-}
 
-@media screen and (max-width: 600px) {
+
+@media screen and (max-width: 750px) {
   .wrapper {
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
@@ -150,5 +183,50 @@
   h2 {
     font-size: 18px;
     line-height: 24px;
+  }
+
+  .task-wrapper {
+    border: solid black 2px;
+    /*display: block;*/
+    grid-template-columns: 1fr 3fr;
+    
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .wrapper {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    width: auto;
+  }
+
+  .content, .sidebar {
+    float: none;
+    width: 100%;
+  }
+
+  .sidebar {
+    background: transparent;
+    border: none;
+    border-top: 2px solid #ccc;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  h2 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .task-wrapper {
+    border: solid black 2px;
+    display: block;
+    
+    
   }
 }
