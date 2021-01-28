@@ -6,6 +6,7 @@ end
 
 use Rack::MethodOverride
 
+use SessionsController
 use UsersController
 use TasksController
 run ApplicationController
