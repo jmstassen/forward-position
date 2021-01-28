@@ -49,6 +49,10 @@
     background-color: red;
   }
 
+  input, select, textarea {
+    font-size: 12;
+    font-family: Verdana, Geneva, sans-serif;
+  }
 
   .new-note {
     height: auto;

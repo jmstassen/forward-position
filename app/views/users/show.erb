@@ -3,6 +3,10 @@
 <form method="post" action="/users/<%= @user.id %>">
   <input type="hidden" name="_method" value="patch">
   <label for="email">Email:</label><input type="string" name="email" value="<%= @user.email %>"><br><br>
+  <h3>Change Password</h3>
   <label for="password">Current Password:</label><input type="password" name="password"><br>
   <label for="new_password"> New Password:</label><input type="password" name="new_password"><br>
   <input type="submit" value="Update User">
+</form>
+  
+
