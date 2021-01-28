@@ -27,7 +27,11 @@ class TasksController < ApplicationController
     else
       if params[:task][:name] != ""
         @task = Task.create(params[:task])
-        @user = User.find(current_user.id)
+        if session[:assistant] == "yes"
+          @user = User.find_by(:assistant_email => current_user.email)
+        else
+          @user = User.find(current_user.id)
+        end
         @user.tasks << @task
         if !params[:note][:content].empty?
           @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
