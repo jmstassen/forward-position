@@ -17,6 +17,15 @@ class TasksController < ApplicationController
     end
   end
 
+  get '/tasks/assistant' do
+    if !logged_in?
+      redirect '/'
+    else
+      @user = User.find_by(:assistant_email => current_user.email)
+      erb :'tasks/index'
+    end
+  end
+
   post '/tasks' do    
     if !logged_in?
       redirect '/'
@@ -61,7 +70,7 @@ class TasksController < ApplicationController
       if user_owns?(@task)
         if params[:task][:name] != ""
           @task.update(params[:task])
-          @user = User.find(current_user.id)
+          @user = @task.user
           @user.tasks << @task
           @task.notes.each do |note|
             @note = note
@@ -76,12 +85,12 @@ class TasksController < ApplicationController
           if !params[:note][:content].empty?
             @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
           end
-            redirect '/tasks'
+            redirect '/tasks/:id'
         else
-          redirect '/tasks'
+          redirect '/tasks/:id'
         end
       else
-        redirect '/tasks'
+        redirect '/tasks/:id'
       end
     end
   end
@@ -100,6 +109,7 @@ class TasksController < ApplicationController
     if Task.exists?(params[:id])
       set_task
       if user_owns?(@task)
+        @user = @task.user
         erb :'/tasks/show'
       else
         redirect '/tasks'

@@ -17,6 +17,7 @@
     <div class="nav">
       <% if logged_in? %><a href="/logout">Log Out</a><% end %>
       <% if logged_in? %><a href="/tasks">My Tasks</a><% end %>
+      <% if logged_in? && User.find_by(:assistant_email => current_user.email)%><a href="/tasks/assistant">Assistant Mode</a><% end %>
       <% if logged_in? %><a href="/tasks/new">New Task</a><% end %>
       <% if logged_in? %><a href="/users/<%= current_user.id %>">Settings</a><% end %>
     </div>

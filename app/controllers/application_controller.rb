@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def user_owns?(task)
-      task.user == current_user
+      task.user == current_user || current_user.email == task.user.assistant_email
     end
 
   end
