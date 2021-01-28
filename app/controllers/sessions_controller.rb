@@ -34,4 +34,9 @@ class SessionsController < ApplicationController
     end
   end
 
+  get '/tasks/exit-assistant' do
+    session.delete(:assistant)
+    redirect '/tasks'
+  end
+
 end
