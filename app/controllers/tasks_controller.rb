@@ -4,8 +4,12 @@ class TasksController < ApplicationController
     if !logged_in?
       redirect '/'
     else
-      @user = current_user
-      erb :'/tasks/index'
+      if session[:assistant] == "yes"
+        redirect '/tasks/assistant'
+      else      
+        @user = current_user
+        erb :'/tasks/index'
+      end
     end
   end
 
@@ -14,15 +18,6 @@ class TasksController < ApplicationController
       redirect '/'
     else
       erb :'/tasks/new'
-    end
-  end
-
-  get '/tasks/assistant' do
-    if !logged_in?
-      redirect '/'
-    else
-      @user = User.find_by(:assistant_email => current_user.email)
-      erb :'tasks/index'
     end
   end
 
