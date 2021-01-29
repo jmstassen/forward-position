@@ -35,7 +35,7 @@ class ReferencesController < ApplicationController
   end
 
   patch '/references/:id' do
-    binding.pry
+  
     set_reference
     if !logged_in?
       redirect '/'

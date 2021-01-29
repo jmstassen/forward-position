@@ -1,5 +1,5 @@
 <h2><%= @reference.title %></h2>
 
-<p><%= @reference.description %></p>
+<textarea readonly class="show-textarea" name="[reference][description]" rows="20" cols="100"><%= @reference.description %></textarea><br>
 
 <a href="/references/<%= @reference.id %>/edit">Edit</a>
