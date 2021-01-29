@@ -40,18 +40,18 @@
             <% end %></h4>
         </div>
         <div class="do-date">
-          <h4><label for="do_date[<%= task.id %>]">do:</label><input type=date name= "do_date[<%= task.id %>]" value="<%= task.do_date %>">
+          <h4><label for="[tasks][<%= task.id %>]do_date"> do:<input type=date name= "[tasks][<%= task.id %>]do_date" value="<%= task.do_date %>"></label>
           </h4>
         </div>
       </div>
       
       <div class="right-column">
         <div class="mark-complete">
-          <h4><input type="checkbox" name="complete[<%= task.id %>]"><label for="complete[<%= task.id %>]"> done</label></h4>
+          <h4><input type="checkbox" name="[tasks][<%= task.id %>]complete"><label for="[tasks][<%= task.id %>]complete"> done</label></h4>
         </div>
         <div class="new-note">
           <h4>add note:</h4>
-          <textarea rows="3" class="note-textarea" name="new-note[<%= task.id %>]"></textarea>
+          <textarea rows="3" class="note-textarea" name="[tasks][<%= task.id %>]content"></textarea>
         </div>
       </div>
     </div>

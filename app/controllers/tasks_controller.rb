@@ -57,9 +57,18 @@ class TasksController < ApplicationController
   end
 
   patch '/tasks/mass-update' do
-    raise params.inspect
+    params[:tasks].each do |updates|
+      @task = Task.find(updates[0].to_i)
+      @task.update(:do_date => updates[1][:do_date].to_date)
+      if updates[1][:complete] == "on"
+        @task.update(:status => "done")
+      end
+      if !updates[1][:content].empty?
+        @task.notes << Note.create(content: updates[1][:content], user_id: current_user.id)
+      end
+    end
+    redirect '/tasks'
   end
-
 
   patch '/tasks/:id' do
     set_task
@@ -125,3 +134,5 @@ class TasksController < ApplicationController
     end
 
 end
+
+
