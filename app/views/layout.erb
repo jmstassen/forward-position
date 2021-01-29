@@ -19,6 +19,7 @@
       <% if logged_in? && session[:assistant] == "yes" %><a href="/tasks/exit-assistant">Exit Assistant Mode</a><% end %>
       <% if logged_in? %><a href="/tasks">Task List</a><% end %>
       <% if logged_in? %><a href="/tasks/new">New Task</a><% end %>
+      <% if logged_in? %><a href="/references">My References</a><% end %>
       <% if logged_in? %><a href="/users/<%= current_user.id %>">Settings</a><% end %>
       <% if logged_in? %><a href="/logout">Log Out</a><% end %>
     </div>

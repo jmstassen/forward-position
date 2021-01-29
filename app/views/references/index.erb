@@ -1,0 +1,9 @@
+<h2><%= @user.name %></h2>
+
+<% if flash[:message] %>
+  <h6><%= flash[:message] %></h3>
+<% end %>
+
+<% @user.references.sort_by(&title).each do |reference| %>
+    </h3><a href="/references/<%= reference.id %>"><%= reference.title></a><h3>
+<% end %>
