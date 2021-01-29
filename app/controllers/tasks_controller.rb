@@ -93,12 +93,12 @@ class TasksController < ApplicationController
           if !params[:note][:content].empty?
             @task.notes << Note.create(content: params[:note][:content], user_id: current_user.id)
           end
-            redirect '/tasks/:id'
+            redirect '/tasks'
         else
-          redirect '/tasks/:id'
+          redirect '/tasks'
         end
       else
-        redirect '/tasks/:id'
+        redirect '/tasks'
       end
     end
   end

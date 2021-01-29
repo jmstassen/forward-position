@@ -41,16 +41,16 @@ class ReferencesController < ApplicationController
       redirect '/'
     else
       if user_owns?(@reference)
-        if params[:reference][title]!= ""
+        if params[:reference][:title] != ""
           @reference.update(params[:reference])
           @user = @reference.user
           @user.references << @reference
-          redirect '/references/:id'
+          redirect "/references/#{@reference.id}"
         else
-          redirect '/references/:id'
+          redirect '/references'
         end
       else
-        redirect '/references/:id'
+        redirect '/references'
       end
     end
   end

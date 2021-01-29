@@ -1,6 +1,6 @@
 <form action="/references/<%= @reference.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <h2><label for="[:reference]title">Title: </label><input type="text" name="[:reference]title" value="<%= @reference.title %>"></h2><br>
-  <textarea name="[:reference]description" rows="20" cols="100"><%= @reference.description %></textarea><br>
+  <h2><label for="[reference][title]">Title: </label><input type="text" name="[reference][title]" value="<%= @reference.title %>"></h2><br>
+  <textarea name="[reference][description]" rows="20" cols="100"><%= @reference.description %></textarea><br>
   <input type="submit" value="Update Reference">
 </form>
