@@ -4,7 +4,7 @@
   <h6><%= flash[:message] %></h3>
 <% end %>
 
-<form method="post" action="tasks/mass-update">
+<form method="post" action="/tasks/mass-update">
   <input type="hidden" name="_method" value="patch">
   <% @user.tasks.sort_by(&:size).each do |task| %>
     <div class="task-wrapper">
