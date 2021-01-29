@@ -4,6 +4,7 @@ class ReferencesController < ApplicationController
     if !logged_in?
       redirect '/'
     else
+      
       if session[:assistant] == "yes"
         redirect '/references/assistant'
       else      
