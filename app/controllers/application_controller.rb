@@ -27,10 +27,9 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id])
     end
 
-    def user_owns?(task)
-      task.user == current_user || current_user.email == task.user.assistant_email
+    def user_owns?(object)
+      object.user == current_user || current_user.email == object.user.assistant_email
     end
-
   end
 
 end

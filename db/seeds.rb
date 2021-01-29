@@ -11,3 +11,9 @@ note3 = Note.create(content: "Email procurement", task_id: task3.id, status: "cl
 note4 = Note.create(content: "Finalize titles", task_id: task3.id, status: "closed", user_id: john.id)
 note5 = Note.create(content: "How many?", task_id: task3.id, status: "open", user_id: long.id)
 note6 = Note.create(content: "Check for 9999", task_id: task1.id, status: "open", user_id: john.id)
+
+ref1 = Reference.create(title: "Cost centers", user_id: long.id, description: "List them all here")
+ref2 = Reference.create(title: "Scheduling preferences", user_id: long.id, description: "List pref all here")
+ref3 = Reference.create(title: "Completed tasks",  user_id: john.id, description: "List tasks all here")
+ref4 = Reference.create(title: "Bodies of work", user_id: john.id, description: "List bodies all here")
+ref5 = Reference.create(title: "Dashboards", user_id: long.id, description: "List dash all here")

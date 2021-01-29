@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20210129042524) do
 
   create_table "references", force: :cascade do |t|
     t.text     "title"
-    t.integer  "description"
+    t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20210129042524) do
     t.string   "category"
     t.integer  "size"
     t.string   "status"
-    t.date     "done_date"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
