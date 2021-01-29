@@ -1,4 +1,4 @@
-class Task < ActiveRecord::Base
+class Contact < ActiveRecord::Base
 
   belongs_to :user
   has_many :notes, as: :notable

@@ -7,7 +7,6 @@ class CreateTasks < ActiveRecord::Migration
       t.string :category
       t.integer :size
       t.string :status
-      t.date :done_date
       t.integer :user_id
 
       t.timestamps null: false
