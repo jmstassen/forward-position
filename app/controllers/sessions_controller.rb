@@ -39,4 +39,14 @@ class SessionsController < ApplicationController
     redirect '/tasks'
   end
 
+  get '/references/assistant' do
+    if !logged_in?
+      redirect '/'
+    else
+      @user = User.find_by(:assistant_email => current_user.email)
+      session[:assistant] = "yes"
+      erb :'references/index'
+    end
+  end
+
 end

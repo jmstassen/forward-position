@@ -2,8 +2,8 @@
 
 <form method="post" action="/users/<%= @user.id %>">
   <input type="hidden" name="_method" value="patch">
-  <h3><label for="email">Email:</label><input type="string" name="email" value="<%= @user.email %>"></h3><br>
-  <h3><label for="assistant_email">Assistant's Email:</label><input type="string" name="email" value="<%= @user.assistant_email %>"></h3><br>
+  <h3><label for="[user]email">Email:</label><input type="string" name="[user]email" value="<%= @user.email %>"></h3><br>
+  <h3><label for="[user]assistant_email">Assistant's Email:</label><input type="string" name="[user]assistant_email" value="<%= @user.assistant_email %>"></h3><br>
   <h3>Change Password</h3>
   <label for="password">Current Password:</label><input type="password" name="password"><br>
   <label for="new_password"> New Password:</label><input type="password" name="new_password"><br>
