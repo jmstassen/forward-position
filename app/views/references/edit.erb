@@ -4,3 +4,8 @@
   <textarea class="reference-textarea" name="[reference][description]" rows="20" cols="100"><%= @reference.description %></textarea><br>
   <input type="submit" value="Update Reference">
 </form>
+<br>
+<form action="/references/<%= @reference.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input class="delete-button" type="submit" value="Delete Reference">
+</form>
