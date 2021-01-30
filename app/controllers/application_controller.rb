@@ -32,4 +32,20 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/completed' do
+    if !logged_in?
+      redirect '/'
+    else
+      if session[:assistant] == "yes"
+        redirect '/tasks/assistant'
+      else      
+        @user = current_user
+        @tasks = @user.tasks.select {|task| task.status == "done"}
+        erb :'/tasks/completed'
+      end
+    end
+  end
+
+
+
 end

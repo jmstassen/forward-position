@@ -1,0 +1,9 @@
+<h2><%= @user.name %></h2>
+
+<% if flash[:message] %>
+  <h6><%= flash[:message] %></h3>
+<% end %>
+
+<% @tasks.sort_by(&:updated_at).each do |task| %>
+    </h3><a href="/tasks/<%= task.id %>"><%= task.name %></a><h3>
+<% end %>
