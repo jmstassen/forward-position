@@ -5,7 +5,7 @@ class TasksController < ApplicationController
       redirect '/'
     else
       if session[:assistant] == "yes"
-        redirect '/tasks/assistant'
+        redirect '/assistant/tasks'
       else      
         @user = current_user
         @tasks = @user.tasks.select {|task| task.status == "active"}

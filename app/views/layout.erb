@@ -15,8 +15,8 @@
   </head>
   <body>
     <div class="nav">
-      <% if logged_in? && !session[:assistant] && User.find_by(:assistant_email => current_user.email)%><a href="/tasks/assistant">Enter Assistant Mode</a><% end %>
-      <% if logged_in? && session[:assistant] == "yes" %><a href="/tasks/exit-assistant">Exit Assistant Mode</a><% end %>
+      <% if logged_in? && !session[:assistant] && User.find_by(:assistant_email => current_user.email)%><a href="/assistant">Enter Assistant Mode</a><% end %>
+      <% if logged_in? && session[:assistant] == "yes" %><a href="/exit-assistant">Exit Assistant Mode</a><% end %>
       <% if logged_in? %><a href="/tasks">Task List</a><% end %>
       <% if logged_in? %><a href="/tasks/new">New Task</a><% end %>
       <% if logged_in? %><a href="/references">References</a><% end %>

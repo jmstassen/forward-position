@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     redirect '/'
   end
 
-  get '/tasks/assistant' do
+  get '/assistant' do
     if !logged_in?
       redirect '/'
     else
@@ -34,12 +34,12 @@ class SessionsController < ApplicationController
     end
   end
 
-  get '/tasks/exit-assistant' do
+  get '/exit-assistant' do
     session.delete(:assistant)
     redirect '/tasks'
   end
 
-  get '/references/assistant' do
+  get '/assistant/reference' do
     
     if !logged_in?
       redirect '/'
