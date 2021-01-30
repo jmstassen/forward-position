@@ -28,7 +28,7 @@ class TasksController < ApplicationController
       @task = Task.find(updates[0].to_i)
       
       @task.update(:do_date => updates[1][:do_date].to_date)
-      if updates[1][:complete] == "on"
+      if updates[1][:status] == "done"
         @task.update(:status => "done")
         
       end
@@ -85,6 +85,7 @@ class TasksController < ApplicationController
           @task.update(params[:task])
           @user = @task.user
           @user.tasks << @task
+          binding.pry
           @task.notes.each do |note|
             @note = note
               if params[:delete] != nil
@@ -92,7 +93,9 @@ class TasksController < ApplicationController
                   @note.delete
                 end
               else
-                @note.update(content: params[:note]["#{@note.id}"])
+                binding.pry
+                @note.update(content: params[:note][:"#{@note.id}"])
+                binding.pry
               end
           end
           if !params[:note][:content].empty?

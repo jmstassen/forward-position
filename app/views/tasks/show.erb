@@ -11,7 +11,7 @@
   <% else %>
     none
   <% end %>
-  Do Date:
+  | Do Date:
   <% if @task.do_date != "" %>
        <%= @task.do_date %>
   <% else %>
@@ -20,7 +20,7 @@
   
   <h5>Notes:</h5>
   <% @task.notes.each do |note| %>
-    - <%= note.content %> (<%= User.find(note.user_id).name %>)
+    - <%= note.content %> (<%= User.find(note.user_id).name %>)<br>
   <% end %>
-
-  <a href="/tasks/<%= @task.id %>/edit">Edit</a>
+  <br>
+  <a href="/tasks/<%= @task.id %>/edit">Edit Task</a>
