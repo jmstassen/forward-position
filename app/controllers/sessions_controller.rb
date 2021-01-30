@@ -24,31 +24,29 @@ class SessionsController < ApplicationController
     redirect '/'
   end
 
-  get '/assistant' do
+  get '/assistant/tasks' do
     if !logged_in?
       redirect '/'
     else
       @user = User.find_by(:assistant_email => current_user.email)
+      @tasks = @user.tasks.select {|task| task.status == "active"}
       session[:assistant] = "yes"
       erb :'tasks/index'
+    end
+  end
+
+  get '/assistant/references' do
+    if !logged_in?
+      redirect '/'
+    else
+      @user = User.find_by(:assistant_email => current_user.email)
+      erb :'references/index'
     end
   end
 
   get '/exit-assistant' do
     session.delete(:assistant)
     redirect '/tasks'
-  end
-
-  get '/assistant/reference' do
-    
-    if !logged_in?
-      redirect '/'
-    else
-      
-      @user = User.find_by(:assistant_email => current_user.email)
-      session[:assistant] = "yes"
-      erb :'references/index'
-    end
   end
 
 end

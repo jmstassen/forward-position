@@ -4,9 +4,8 @@ class ReferencesController < ApplicationController
     if !logged_in?
       redirect '/'
     else
-      
       if session[:assistant] == "yes"
-        redirect '/references/assistant'
+        redirect '/assistant/references'
       else      
         @user = current_user
         erb :'/references/index'

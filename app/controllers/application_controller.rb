@@ -37,12 +37,12 @@ class ApplicationController < Sinatra::Base
       redirect '/'
     else
       if session[:assistant] == "yes"
-        redirect '/tasks/assistant'
+        @user = User.find_by(:assistant_email => current_user.email)
       else      
         @user = current_user
-        @tasks = @user.tasks.select {|task| task.status == "done"}
-        erb :'/tasks/completed'
       end
+      @tasks = @user.tasks.select {|task| task.status == "done"}
+      erb :'/tasks/completed'
     end
   end
 
