@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if logged_in?
-      redirect "/tasks"
+      redirect '/tasks'
     else
       erb :welcome
     end
@@ -31,21 +31,4 @@ class ApplicationController < Sinatra::Base
       object.user == current_user || current_user.email == object.user.assistant_email
     end
   end
-
-  get '/completed' do
-    if !logged_in?
-      redirect '/'
-    else
-      if session[:assistant] == "yes"
-        @user = User.find_by(:assistant_email => current_user.email)
-      else      
-        @user = current_user
-      end
-      @tasks = @user.tasks.select {|task| task.status == "done"}
-      erb :'/tasks/completed'
-    end
-  end
-
-
-
 end
