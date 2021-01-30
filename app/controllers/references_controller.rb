@@ -8,10 +8,31 @@ class ReferencesController < ApplicationController
         redirect '/assistant/references'
       else      
         @user = current_user
+        @references = @user.references.sort_by { |r| [r.title.downcase]}
         erb :'/references/index'
       end
     end
   end
+
+  post '/references' do 
+    if !logged_in?
+      redirect '/'
+    else
+      if params[:reference][:title] != ""
+          @reference = Reference.create(params[:reference])
+          if session[:assistant] == "yes"
+            @user = User.find_by(:assistant_email => current_user.email)
+          else
+            @user = User.find(current_user.id)
+          end
+          @user.references << @reference
+          @references = @user.references.sort_by(&:title)
+          redirect '/references'
+        else
+          redirect '/references/new'
+        end
+      end
+    end
 
   get '/references/new' do
     if !logged_in?
@@ -35,7 +56,6 @@ class ReferencesController < ApplicationController
   end
 
   patch '/references/:id' do
-  
     set_reference
     if !logged_in?
       redirect '/'
