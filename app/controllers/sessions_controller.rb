@@ -40,6 +40,7 @@ class SessionsController < ApplicationController
       redirect '/'
     else
       @user = User.find_by(:assistant_email => current_user.email)
+      @references = @user.references.sort_by { |r| [r.title.downcase]}
       erb :'references/index'
     end
   end
