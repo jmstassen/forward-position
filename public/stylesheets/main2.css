@@ -67,6 +67,7 @@
   
   .delete-button {
     background-color: red;
+    float: right
   }
 
   input, select, textarea {
