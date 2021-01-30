@@ -141,7 +141,8 @@ class TasksController < ApplicationController
       else      
         @user = current_user
       end
-      @tasks = @user.tasks.select {|task| task.status == "done"}
+      completed = @user.tasks.select {|task| task.status == "done"}
+      @tasks = completed.sort_by { |t| t.updated_at }.reverse
       erb :'/tasks/completed'
     end
   end

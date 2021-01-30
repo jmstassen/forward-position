@@ -1,9 +1,9 @@
-<h2><%= @user.name %></h2>
+<h2><%= @user.name %></h2> - Completed Tasks
 
 <% if flash[:message] %>
   <h6><%= flash[:message] %></h3>
 <% end %>
 
-<% @tasks.sort_by(&:updated_at).each do |task| %>
-    </h3><a href="/tasks/<%= task.id %>"><%= task.name %></a><h3>
+<% @tasks.each do |task| %>
+    <p><a href="/tasks/<%= task.id %>"><%= task.name %></a> (updated <%= task.updated_at.strftime("%m/%d") %>)</p>
 <% end %>
