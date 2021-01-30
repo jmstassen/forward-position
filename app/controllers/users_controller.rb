@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.authenticate(params[:password])
       @user.update_attribute(:email, params[:user][:email])
+      @user.update_attribute(:name, params[:user][:name])
       @user.update_attribute(:assistant_email, params[:user][:assistant_email])
       @user.update_attribute(:password, params[:new_password])
       redirect "/users/#{@user.id}"
