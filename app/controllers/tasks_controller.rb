@@ -8,6 +8,7 @@ class TasksController < ApplicationController
         redirect '/tasks/assistant'
       else      
         @user = current_user
+        @tasks = @user.tasks.select {|task| task.status == "active"}
         erb :'/tasks/index'
       end
     end
@@ -22,11 +23,14 @@ class TasksController < ApplicationController
   end
 
   patch '/tasks/mass-update' do
+    
     params[:tasks].each do |updates|
       @task = Task.find(updates[0].to_i)
+      
       @task.update(:do_date => updates[1][:do_date].to_date)
       if updates[1][:complete] == "on"
         @task.update(:status => "done")
+        
       end
       if !updates[1][:content].empty?
         @task.notes << Note.create(content: updates[1][:content], user_id: current_user.id)
@@ -41,6 +45,7 @@ class TasksController < ApplicationController
     else
       if params[:task][:name] != ""
         @task = Task.create(params[:task])
+        @task.status = "active"
         if session[:assistant] == "yes"
           @user = User.find_by(:assistant_email => current_user.email)
         else

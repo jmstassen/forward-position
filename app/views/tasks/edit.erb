@@ -3,30 +3,43 @@
 <form action="/tasks/<%= @task.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <h3><label for="name"></label><input class="task-name-form" type="text" name="task[name]" size="50" value="<%= @task.name %>"></h3><br>
-  <h3><label for="due_date">Due Date: </label><input type="date" name="task[due_date]" value="<%= @task.due_date %>">
-    <label for="do_date">Do Date: </label><input type="date" name="task[do_date]" value="<%= @task.do_date %>">
-  <label for="category">Category: </label>
-    <select id="category" name="task[category]">
-      <option value="approval" <% if @task.category == "approval" %>selected<% end %>>approval</option>
-      <option value="decision" <% if @task.category == "decision" %>selected<% end %>>decision</option>
-      <option value="deliverable" <% if @task.category == "deliverable" %>selected<% end %>>deliverable</option>
-      <option value="email" <% if @task.category == "email" %>selected<% end %>>email</option>
-      <option value="fyi" <% if @task.category == "fyi" %>selected<% end %>>fyi</option>
-      <option value="preparation" <% if @task.category == "preparation" %>selected<% end %>>preparation</option>
-      <option value="review" <% if @task.category == "review" %>selected<% end %>>review</option>
-      <option value="tracking" <% if @task.category == "tracking" %>selected<% end %>>tracking</option>
-      <option value="other" <% if @task.category == "other" %>selected<% end %>>other</option>
-    </select>
-    <label for="size">Size: </label>
-    <select id="size" name="task[size]">
-      <option value="0" <% if @task.size == 0 %>selected<% end %>>0</option>
-      <option value="1" <% if @task.size == 1 %>selected<% end %>>1</option>  
-      <option value="2" <% if @task.size == 2 %>selected<% end %>>2</option>
-      <option value="3" <% if @task.size == 3 %>selected<% end %>>3</option>
-      <option value="5" <% if @task.size == 5 %>selected<% end %>>5</option>
-      <option value="8" <% if @task.size == 8 %>selected<% end %>>8</option>
-      <option value="13" <% if @task.size == 13 %>selected<% end %>>13</option>
-    </select></h3><br>
+  
+  
+    
+      <div><label for="due_date">Due Date: </label><input type="date" name="task[due_date]" value="<%= @task.due_date %>">
+      <label for="do_date">Do Date: </label><input type="date" name="task[do_date]" value="<%= @task.do_date %>">
+      </div><br>
+      <div><label for="category">Category: </label>
+        <select id="category" name="task[category]">
+          <option value="approval" <% if @task.category == "approval" %>selected<% end %>>approval</option>
+          <option value="decision" <% if @task.category == "decision" %>selected<% end %>>decision</option>
+          <option value="deliverable" <% if @task.category == "deliverable" %>selected<% end %>>deliverable</option>
+          <option value="email" <% if @task.category == "email" %>selected<% end %>>email</option>
+          <option value="fyi" <% if @task.category == "fyi" %>selected<% end %>>fyi</option>
+          <option value="preparation" <% if @task.category == "preparation" %>selected<% end %>>preparation</option>
+          <option value="review" <% if @task.category == "review" %>selected<% end %>>review</option>
+          <option value="tracking" <% if @task.category == "tracking" %>selected<% end %>>tracking</option>
+          <option value="other" <% if @task.category == "other" %>selected<% end %>>other</option>
+        </select>
+      <label for="size">Size: </label>
+        <select id="size" name="task[size]">
+          <option value="1" <% if @task.size == 1 %>selected<% end %>>1</option>  
+          <option value="2" <% if @task.size == 2 %>selected<% end %>>2</option>
+          <option value="3" <% if @task.size == 3 %>selected<% end %>>3</option>
+          <option value="5" <% if @task.size == 5 %>selected<% end %>>5</option>
+          <option value="8" <% if @task.size == 8 %>selected<% end %>>8</option>
+          <option value="13" <% if @task.size == 13 %>selected<% end %>>13</option>
+        </select>
+      
+      <label for="status">Status: </label>
+        <select id="status" name="task[status]">
+          <option value="active" <% if @task.status == "active" %>selected<% end %>>active</option>
+          <option value="done" <% if @task.status == "done" %>selected<% end %>>done</option>
+        </select>
+      </div>
+    
+  
+
 
   <h3>Existing Notes:</h3>
   <% @task.notes.each do |note| %>

@@ -6,7 +6,7 @@
 
 <form method="post" action="/tasks/mass-update">
   <input type="hidden" name="_method" value="patch">
-  <% @user.tasks.sort_by(&:size).each do |task| %>
+  <% @tasks.sort_by(&:size).each do |task| %>
     <div class="task-wrapper">
       <div class="left-column">
         <div class="category">
@@ -47,7 +47,7 @@
       
       <div class="right-column">
         <div class="mark-complete">
-          <h4><input type="checkbox" name="[tasks][<%= task.id %>]complete"><label for="[tasks][<%= task.id %>]complete"> done</label></h4>
+          <h4><input type="checkbox" name="[tasks][<%= task.id %>]status" value="done"><label for="[tasks][<%= task.id %>]complete"> done</label></h4>
         </div>
         <div class="new-note">
           <h4>add note:</h4>
