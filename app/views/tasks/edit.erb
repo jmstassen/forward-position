@@ -4,8 +4,6 @@
   <input type="hidden" name="_method" value="patch">
   <h3><label for="name"></label><input class="task-name-form" type="text" name="task[name]" size="50" value="<%= @task.name %>"></h3><br>
   
-  
-    
       <div><label for="due_date">Due Date: </label><input type="date" name="task[due_date]" value="<%= @task.due_date %>">
       <label for="do_date">Do Date: </label><input type="date" name="task[do_date]" value="<%= @task.do_date %>">
       </div><br>
@@ -38,9 +36,6 @@
         </select>
       </div>
     
-  
-
-
   <h3>Existing Notes:</h3>
   <% @task.notes.each do |note| %>
     <h6>(<%= User.find(note.user_id).name %>:)</h6>
