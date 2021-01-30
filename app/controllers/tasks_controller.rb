@@ -135,6 +135,20 @@ class TasksController < ApplicationController
     end
   end
 
+  get '/completed' do
+    if !logged_in?
+      redirect '/'
+    else
+      if session[:assistant] == "yes"
+        @user = User.find_by(:assistant_email => current_user.email)
+      else      
+        @user = current_user
+      end
+      @tasks = @user.tasks.select {|task| task.status == "done"}
+      erb :'/tasks/completed'
+    end
+  end
+
   private
 
     def set_task
