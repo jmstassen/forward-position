@@ -88,20 +88,21 @@ class ReferencesController < ApplicationController
       redirect '/references'
     end
   end
-end
 
-delete '/references/:id' do
-  set_reference
-  if user_owns?(@reference)
-    @reference.destroy
-    redirect '/references'
-  else
-    redirect '/references'
+
+  delete '/references/:id' do
+    set_reference
+    if user_owns?(@reference)
+      @reference.destroy
+      redirect '/references'
+    else
+      redirect '/references'
+    end
   end
-end
 
 private
 
   def set_reference
     @reference = Reference.find(params[:id])
   end
+end
