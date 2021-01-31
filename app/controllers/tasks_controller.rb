@@ -85,14 +85,14 @@ class TasksController < ApplicationController
           @task.update(params[:task])
           @user = @task.user
           @user.tasks << @task
-          binding.pry
+          
           @task.notes.each do |note|
               if params[:delete] != nil && params[:delete]["#{note.id}"] != nil
                 note.delete
               else
-                binding.pry
+                
                 note.update(content: params[:note]["#{note.id}"])
-                binding.pry
+                
               end
           end
           if !params[:note][:content].empty?
