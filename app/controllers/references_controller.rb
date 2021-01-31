@@ -90,6 +90,16 @@ class ReferencesController < ApplicationController
   end
 end
 
+delete '/references/:id' do
+  set_reference
+  if user_owns?(@reference)
+    @reference.destroy
+    redirect '/references'
+  else
+    redirect '/references'
+  end
+end
+
 private
 
   def set_reference

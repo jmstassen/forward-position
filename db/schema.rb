@@ -11,27 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210129042524) do
-
-  create_table "contacts", force: :cascade do |t|
-    t.string   "name"
-    t.date     "organization"
-    t.date     "email"
-    t.string   "phone"
-    t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
+ActiveRecord::Schema.define(version: 20210129040341) do
 
   create_table "notes", force: :cascade do |t|
     t.text     "content"
     t.integer  "task_id"
-    t.text     "status"
     t.integer  "user_id"
-    t.integer  "reference_id"
-    t.integer  "contact_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "references", force: :cascade do |t|
