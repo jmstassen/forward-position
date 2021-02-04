@@ -5,5 +5,5 @@
 <% end %>
 
 <% @tasks.each do |task| %>
-    <p><a href="/tasks/<%= task.id %>"><%= task.name %></a> (updated <%= task.updated_at.strftime("%m/%d") %>)</p>
+    <p><a href="/tasks/<%= task.id %>"><%= task.name %></a></p>
 <% end %>
