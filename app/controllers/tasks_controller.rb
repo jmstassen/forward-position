@@ -49,7 +49,7 @@ class TasksController < ApplicationController
         if session[:assistant] == "yes"
           @user = User.find_by(:assistant_email => current_user.email)
         else
-          @user = User.find(current_user.id)
+          @user = current_user
         end
         @user.tasks << @task
         if !params[:note][:content].empty?
@@ -82,10 +82,11 @@ class TasksController < ApplicationController
     else
       if user_owns?(@task)
         if params[:task][:name] != ""
+          binding.pry
           @task.update(params[:task])
           @user = @task.user
           @user.tasks << @task
-          
+          binding.pry
           @task.notes.each do |note|
               if params[:delete] != nil && params[:delete]["#{note.id}"] != nil
                 note.delete
