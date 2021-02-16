@@ -9,6 +9,7 @@
       </div><br>
       <div><label for="category">Category: </label>
         <select id="category" name="task[category]">
+          <option value="admin" <% if @task.category == "admin" %>selected<% end %>>admin</option>  
           <option value="approval" <% if @task.category == "approval" %>selected<% end %>>approval</option>
           <option value="decision" <% if @task.category == "decision" %>selected<% end %>>decision</option>
           <option value="deliverable" <% if @task.category == "deliverable" %>selected<% end %>>deliverable</option>
@@ -16,7 +17,9 @@
           <option value="fyi" <% if @task.category == "fyi" %>selected<% end %>>fyi</option>
           <option value="preparation" <% if @task.category == "preparation" %>selected<% end %>>preparation</option>
           <option value="review" <% if @task.category == "review" %>selected<% end %>>review</option>
+          <option value="scheduling" <% if @task.category == "scheduling" %>selected<% end %>>scheduling</option>
           <option value="tracking" <% if @task.category == "tracking" %>selected<% end %>>tracking</option>
+          <option value="travel" <% if @task.category == "travel" %>selected<% end %>>travel</option>
           <option value="other" <% if @task.category == "other" %>selected<% end %>>other</option>
         </select>
       <label for="size">Size: </label>
