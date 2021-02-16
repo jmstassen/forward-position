@@ -23,14 +23,11 @@ class TasksController < ApplicationController
   end
 
   patch '/tasks/mass-update' do
-    
     params[:tasks].each do |updates|
       @task = Task.find(updates[0].to_i)
-      
       @task.update(:do_date => updates[1][:do_date].to_date)
       if updates[1][:status] == "done"
         @task.update(:status => "done")
-        
       end
       if !updates[1][:content].empty?
         @task.notes << Note.create(content: updates[1][:content], user_id: current_user.id)
@@ -82,18 +79,12 @@ class TasksController < ApplicationController
     else
       if user_owns?(@task)
         if params[:task][:name] != ""
-          
           @task.update(params[:task])
-          @user = @task.user
-          @user.tasks << @task
-          
           @task.notes.each do |note|
               if params[:delete] != nil && params[:delete]["#{note.id}"] != nil
                 note.delete
               else
-                
                 note.update(content: params[:note]["#{note.id}"])
-                
               end
           end
           if !params[:note][:content].empty?
