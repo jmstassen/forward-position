@@ -82,11 +82,11 @@ class TasksController < ApplicationController
     else
       if user_owns?(@task)
         if params[:task][:name] != ""
-          binding.pry
+          
           @task.update(params[:task])
           @user = @task.user
           @user.tasks << @task
-          binding.pry
+          
           @task.notes.each do |note|
               if params[:delete] != nil && params[:delete]["#{note.id}"] != nil
                 note.delete
