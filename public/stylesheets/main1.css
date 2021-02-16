@@ -46,20 +46,6 @@
     resize: none;
   }
 
-  .task-notes {
-    display: block;
-    height: 100%;
-  }
-
-  .index-textarea {
-    width: 100%;
-    resize: none;
-    /* -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    resize: none; */
-  }
-
   .show-textarea {
     height: 100%;
     width: 100%;
